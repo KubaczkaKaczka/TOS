@@ -4,8 +4,8 @@ set comment = Add your own things here :) that happen on startup.
 set comment = You can change cursor on startup, everything!
 set comment = Good Luck! ;)
 
-title TOS 0.2.0 (Build 01.22.2021)
-echo TOS 0.2.0 (Build 01.22.2021) 2021-2021
+title TOS 0.2.1 (Build 01.23.2021)
+echo TOS 0.2.1 (Build 01.23.2021) 2021-2021
 echo Type "help" to get help.
 :cmdlr
 set /p cmdl=%cursor%/
@@ -17,6 +17,7 @@ if %cmdl%==edit goto edit
 if %cmdl%==dir goto dir
 if %cmdl%==cmd goto cmd
 if %cmdl%==info goto info
+if %cmdl%==echo goto echo
 
 :wc
 set comment = Here's a message if you put wrong command! You can change it!
@@ -29,7 +30,7 @@ goto cmdlr
 :info
 set comment = Here's a information about Operating System.
 echo.
-echo TOS 0.2.0 (Build 01.22.2021) 2021-2021
+echo TOS 0.2.1 (Build 01.23.2021) 2021-2021
 echo.
 goto cmdlr
 
@@ -41,6 +42,7 @@ echo mplayer - Launch Music Player.
 echo edit - Launch Text Editor.
 echo cursor - Change cursor (prefix of line).
 echo dir - Shows all files.
+echo echo - Displays text.
 echo cmd - Launch Default Windows Command Line. (Warning! You must after this relaunch TOS!)
 echo info - Check information about version (You must update manually)
 echo.
@@ -66,17 +68,14 @@ goto cmdlr
 
 :edit
 echo Entering Text Editor... Please Wait...
-start EDIT.BAT
+start EDIT.EXE
 echo Entered Text Editor.
 echo.
 goto cmdlr
 
 :dir
-echo Warning! It automaticly clear window! You are sure?
-set /p diryn=(Y/N):
-if %diryn%==N goto cmdl
-start DIR.BAT
-goto cmdl
+dir /p
+goto cmdlr
 
 :cmd
 echo Warning! It automaticly close TOS (If you want to open it from cmd, type TOS)! You are sure?
@@ -84,4 +83,9 @@ set /p cmdyn=(Y/N):
 if %cmdyn%==N goto cmdl
 echo Entering Command Line... Please Wait...
 start cmd 
-goto cmdl
+exit
+
+:echo
+set /p et=Type text to display:
+echo %et%
+goto cmdlr
