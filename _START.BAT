@@ -61,7 +61,7 @@ goto cmdlr
 :mplayer
 echo.
 echo Entering Music Player... Please Wait...
-start "TOS 0.2 [MPLAYER]" MPLAYER.EXE
+start MPLAYER.EXE
 echo Entered Music Player.
 echo.
 goto cmdlr
