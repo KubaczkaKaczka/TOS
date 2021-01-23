@@ -4,8 +4,8 @@ set comment = Add your own things here :) that happen on startup.
 set comment = You can change cursor on startup, everything!
 set comment = Good Luck! ;)
 
-title TOS 0.2.1 (Build 01.23.2021)
-echo TOS 0.2.1 (Build 01.23.2021) 2021-2021
+title TOS 0.2.1_1 (Build 01.23.2021)
+echo TOS 0.2.1_1 (Build 01.23.2021) 2021-2021
 echo Type "help" to get help.
 :cmdlr
 set /p cmdl=%cursor%/
@@ -30,7 +30,7 @@ goto cmdlr
 :info
 set comment = Here's a information about Operating System.
 echo.
-echo TOS 0.2.1 (Build 01.23.2021) 2021-2021
+echo TOS 0.2.1_1 (Build 01.23.2021) 2021-2021
 echo.
 goto cmdlr
 
@@ -80,12 +80,17 @@ goto cmdlr
 :cmd
 echo Warning! It automaticly close TOS (If you want to open it from cmd, type TOS)! You are sure?
 set /p cmdyn=(Y/N):
-if %cmdyn%==N goto cmdl
-echo Entering Command Line... Please Wait...
-start cmd 
+if %cmdyn%==Y goto cmd2
+if %cmdyn%==y goto cmd2
+goto cmdlr
 exit
 
 :echo
 set /p et=Type text to display:
 echo %et%
 goto cmdlr
+
+:cmd2
+echo Starting Command Line... Please Wait...
+start cmd 
+exit
