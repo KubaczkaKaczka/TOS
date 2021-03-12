@@ -3,9 +3,11 @@ set cursor=TOS Folder:
 set comment = Add your own things here :) that happen on startup.
 set comment = You can change cursor on startup, everything!
 set comment = Good Luck! ;)
+set ver=0.3.0
+set titled=TOS %ver% (Build 03.12.2021)
 
-title TOS 0.2.1_1 (Build 01.23.2021)
-echo TOS 0.2.1_1 (Build 01.23.2021) 2021-2021
+title %titled%
+echo TOS %ver% (Build 03.12.2021) 2021-2021
 echo Type "help" to get help.
 :cmdlr
 set /p cmdl=%cursor%/
@@ -18,6 +20,9 @@ if %cmdl%==dir goto dir
 if %cmdl%==cmd goto cmd
 if %cmdl%==info goto info
 if %cmdl%==echo goto echo
+if %cmdl%==xpedit goto xpedit
+if %cmdl%==cshrtcut goto cshrtcut
+if %cmdl%==delete goto delete
 
 :wc
 set comment = Here's a message if you put wrong command! You can change it!
@@ -30,7 +35,7 @@ goto cmdlr
 :info
 set comment = Here's a information about Operating System.
 echo.
-echo TOS 0.2.1_1 (Build 01.23.2021) 2021-2021
+echo TOS %ver% (Build 03.12.2021) 2021-2021
 echo.
 goto cmdlr
 
@@ -43,7 +48,10 @@ echo edit - Launch Text Editor.
 echo cursor - Change cursor (prefix of line).
 echo dir - Shows all files.
 echo echo - Displays text.
+echo delete - Delete file.
 echo cmd - Launch Default Windows Command Line. (Warning! You must after this relaunch TOS!)
+echo xpedit - Launch Default Windows XP Text Editor (compatible only with Windows XP)
+echo cshrtcut - Shortcut Creator
 echo info - Check information about version (You must update manually)
 echo.
 echo Sorry for no directories, i work on it...
@@ -94,3 +102,28 @@ goto cmdlr
 echo Starting Command Line... Please Wait...
 start cmd 
 exit
+
+:xpedit
+edit
+
+:cshrtcut
+title TOS %ver% Shortcut Creator (Version 0.1)
+cls
+echo Welcome to TOS Shortcut Creator!
+set /p cshrtctname=First, Select name of shortcut (no spaces):
+set /p cshrtctdest=Now, select destination (file to open)
+cls
+echo Creating shortcut...
+echo @echo off > %cshrtctname%.bat
+echo start %cshrtctdest% > %cshrtctname%.bat
+echo Shortcut created!
+pause
+title %titled%
+goto cmdlr
+
+:delete
+set /p wftdel=What file you want to delete?:
+del %wftdel%
+echo File deleted.
+echo.
+goto cmdlr
