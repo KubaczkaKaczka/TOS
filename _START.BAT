@@ -3,11 +3,11 @@ set cursor=TOS Folder:
 set comment = Add your own things here :) that happen on startup.
 set comment = You can change cursor on startup, everything!
 set comment = Good Luck! ;)
-set ver=0.3.0
-set titled=TOS %ver% (Build 03.12.2021)
+set ver=0.3.1
+set titled=TOS %ver% (Build 03.15.2021)
 
 title %titled%
-echo TOS %ver% (Build 03.12.2021) 2021-2021
+echo %titled% 2021-2021
 echo Type "help" to get help.
 :cmdlr
 set /p cmdl=%cursor%/
@@ -20,9 +20,10 @@ if %cmdl%==dir goto dir
 if %cmdl%==cmd goto cmd
 if %cmdl%==info goto info
 if %cmdl%==echo goto echo
-if %cmdl%==xpedit goto xpedit
 if %cmdl%==cshrtcut goto cshrtcut
 if %cmdl%==delete goto delete
+if %cmdl%==rename goto rename
+if %cmdl%==clock goto clock
 
 :wc
 set comment = Here's a message if you put wrong command! You can change it!
@@ -35,7 +36,7 @@ goto cmdlr
 :info
 set comment = Here's a information about Operating System.
 echo.
-echo TOS %ver% (Build 03.12.2021) 2021-2021
+echo TOS %ver% (Build 03.15.2021) 2021-2021
 echo.
 goto cmdlr
 
@@ -46,11 +47,12 @@ echo help - Show commands.
 echo mplayer - Launch Music Player.
 echo edit - Launch Text Editor.
 echo cursor - Change cursor (prefix of line).
+echo clock - Show clock.
 echo dir - Shows all files.
 echo echo - Displays text.
 echo delete - Delete file.
+echo rename - Rename file.
 echo cmd - Launch Default Windows Command Line. (Warning! You must after this relaunch TOS!)
-echo xpedit - Launch Default Windows XP Text Editor (compatible only with Windows XP)
 echo cshrtcut - Shortcut Creator
 echo info - Check information about version (You must update manually)
 echo.
@@ -76,7 +78,7 @@ goto cmdlr
 
 :edit
 echo Entering Text Editor... Please Wait...
-start EDIT.EXE
+edit
 echo Entered Text Editor.
 echo.
 goto cmdlr
@@ -103,15 +105,12 @@ echo Starting Command Line... Please Wait...
 start cmd 
 exit
 
-:xpedit
-edit
-
 :cshrtcut
 title TOS %ver% Shortcut Creator (Version 0.1)
 cls
 echo Welcome to TOS Shortcut Creator!
 set /p cshrtctname=First, Select name of shortcut (no spaces):
-set /p cshrtctdest=Now, select destination (file to open)
+set /p cshrtctdest=Now, select destination (file to open):
 cls
 echo Creating shortcut...
 echo @echo off > %cshrtctname%.bat
@@ -125,5 +124,22 @@ goto cmdlr
 set /p wftdel=What file you want to delete?:
 del %wftdel%
 echo File deleted.
+echo.
+goto cmdlr
+
+:rename
+set /p renfle=What file you want to rename?:
+set /p rennam=What name you want on this file?:
+ren %renfle% %rennam%
+echo File renamed.
+echo.
+goto cmdlr
+
+:clock
+echo Date:
+echo  %date%
+echo.
+echo Time:
+echo %time%
 echo.
 goto cmdlr
