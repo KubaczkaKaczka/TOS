@@ -3,7 +3,7 @@ set cursor=TOS Folder:
 set comment = Add your own things here :) that happen on startup.
 set comment = You can change cursor on startup, everything!
 set comment = Good Luck! ;)
-set ver=0.3.1
+set ver=0.3.2
 set titled=TOS %ver% (Build 03.15.2021)
 
 title %titled%
@@ -24,6 +24,7 @@ if %cmdl%==cshrtcut goto cshrtcut
 if %cmdl%==delete goto delete
 if %cmdl%==rename goto rename
 if %cmdl%==clock goto clock
+if %cmdl%==cls goto cls
 
 :wc
 set comment = Here's a message if you put wrong command! You can change it!
@@ -49,6 +50,7 @@ echo edit - Launch Text Editor.
 echo cursor - Change cursor (prefix of line).
 echo clock - Show clock.
 echo dir - Shows all files.
+edtit cls - Clears screen.
 echo echo - Displays text.
 echo delete - Delete file.
 echo rename - Rename file.
@@ -142,4 +144,8 @@ echo.
 echo Time:
 echo %time%
 echo.
+goto cmdlr
+
+:cls
+cls
 goto cmdlr
