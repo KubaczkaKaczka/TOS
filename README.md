@@ -15,6 +15,7 @@ KubakaOff/KubaczkaKaczka - Creator
 Programs:
 MPxPlay - Music Player
 nano Port for Windows - Text Editor
+Lynx - Internet Browser
 
 And
 PS Sorry for bad English...
