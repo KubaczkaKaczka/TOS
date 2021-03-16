@@ -1,2 +1,2 @@
-start _START.BAT
-exit
+@echo off
+_START
