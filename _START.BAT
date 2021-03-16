@@ -3,7 +3,7 @@ set cursor=TOS Folder:
 set comment = Add your own things here :) that happen on startup.
 set comment = You can change cursor on startup, everything!
 set comment = Good Luck! ;)
-set ver=0.4.0
+set ver=0.4.1
 set titled=TOS %ver% Stable
 
 title %titled%
@@ -28,7 +28,7 @@ if %cmdl%==clock goto clock
 if %cmdl%==cls goto cls
 if %cmdl%==start3p goto start3p
 if %cmdl%==launch3p goto launch3p
-
+if %cmdl%==ibrowser goto ibrowser
 :wc
 set comment = Here's a message if you put wrong command! You can change it!
 echo.
@@ -50,6 +50,7 @@ set comment = Here is help command data. You can change them!
 echo help - Show commands.
 echo mplayer - Launch Music Player.
 echo edit - Launch Text Editor.
+echo ibrowser - Launch Internet Browser
 echo cursor - Change cursor (prefix of line).
 echo clock - Show clock.
 echo dir - Shows all files.
@@ -168,4 +169,12 @@ set /p l3pfyw=What file you want to open?:
 echo Launching Custom Program...
 %l3pfyw%
 echo You Exited from Custom Program.
+goto cmdlr
+
+:ibrowser
+echo Launching Internet Browser...
+cd IBROWSER
+start LynxPortable
+cd..
+echo Launched Internet Browser in different window.
 goto cmdlr
