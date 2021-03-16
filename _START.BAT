@@ -3,10 +3,11 @@ set cursor=TOS Folder:
 set comment = Add your own things here :) that happen on startup.
 set comment = You can change cursor on startup, everything!
 set comment = Good Luck! ;)
-set ver=0.3.3
-set titled=TOS %ver% (Build 03.15.2021)
+set ver=0.4.0
+set titled=TOS %ver% Stable
 
 title %titled%
+echo.
 echo %titled% 2021-2021
 echo Type "help" to get help.
 :cmdlr
@@ -25,6 +26,8 @@ if %cmdl%==delete goto delete
 if %cmdl%==rename goto rename
 if %cmdl%==clock goto clock
 if %cmdl%==cls goto cls
+if %cmdl%==start3p goto start3p
+if %cmdl%==launch3p goto launch3p
 
 :wc
 set comment = Here's a message if you put wrong command! You can change it!
@@ -37,7 +40,7 @@ goto cmdlr
 :info
 set comment = Here's a information about Operating System.
 echo.
-echo TOS %ver% (Build 03.15.2021) 2021-2021
+echo %titled% 2021-2021
 echo.
 goto cmdlr
 
@@ -54,6 +57,10 @@ echo cls - Clears screen.
 echo echo - Displays text.
 echo delete - Delete file.
 echo rename - Rename file.
+echo start3p - Launch in new window your own/3rd party bat/exe program. Works the best with bat files.
+echo launch3p - Launch in TOS window your own/3rd party bat/exe program. Works the best with exe files.
+echo Warning! You have risk of restarting TOS! If you are launching bat file, add in the end (or in the exit script)
+echo "TOS" command.
 echo cmd - Launch Default Windows Command Line. (Warning! You must after this relaunch TOS!)
 echo cshrtcut - Shortcut Creator
 echo info - Check information about version (You must update manually)
@@ -90,10 +97,9 @@ dir /p
 goto cmdlr
 
 :cmd
-echo Warning! It automaticly close TOS (If you want to open it from cmd, type TOS)! You are sure?
-set /p cmdyn=(Y/N):
-if %cmdyn%==Y goto cmd2
-if %cmdyn%==y goto cmd2
+echo Starting Command Line... Please Wait...
+echo.
+cmd
 goto cmdlr
 exit
 
@@ -104,11 +110,11 @@ goto cmdlr
 
 :cmd2
 echo Starting Command Line... Please Wait...
-start cmd 
+cmd
 exit
 
 :cshrtcut
-title TOS %ver% Shortcut Creator (Version 0.1)
+title TOS %ver% Shortcut Creator
 cls
 echo Welcome to TOS Shortcut Creator!
 set /p cshrtctname=First, Select name of shortcut (no spaces):
@@ -148,4 +154,18 @@ goto cmdlr
 
 :cls
 cls
+goto cmdlr
+
+:start3p
+set /p s3pfyw=What file you want to open?:
+echo Launching Custom Program...
+start %s3pfyw%
+echo You Exited from Custom Program.
+goto cmdlr
+
+:launch3p
+set /p l3pfyw=What file you want to open?:
+echo Launching Custom Program...
+%l3pfyw%
+echo You Exited from Custom Program.
 goto cmdlr
