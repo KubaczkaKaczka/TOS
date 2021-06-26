@@ -1,4 +1,7 @@
 # TOS
+
+IMPORTANT!
+If you want to open source code, download release, not source code! (source code is outdated)
 TOS is a open-source "Operating System".
 
 TOS (Text Operating System) is a open-source Operating System that is based on XP. ISO's is not available right now, so install Windows XP or later and make it turn on on startup.
